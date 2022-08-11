@@ -33,12 +33,12 @@ jobs:
       - name: Prepare App
         run: |
           rm -rf apk/
-          mkdir -p apk/
+          mkdir -p ${{ github.workspace }}/apk/
           for file in `find ~ -name "*release*.apk" -print`; do
-            mv "$file" apk/TVBox_release_${{ env.tag }}.apk
+            mv "$file" ${{ github.workspace }}/apk/
           done
       - name: Upload App To Artifact
         uses: actions/upload-artifact@v3
         with:
           name: tvbox.osc
-          path: TVBoxOSC/apk/*
+          path: ${{ github.workspace }}/apk/*
