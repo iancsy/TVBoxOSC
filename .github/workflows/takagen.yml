@@ -28,8 +28,8 @@ jobs:
       - name: Checkout Source Code and Zip
         if: ${{ env.commit }}
         run: |
-          git clone ${{ env.upstreamCode }} Box
-          cd Box
+          git clone ${{ env.upstreamCode }} TVBoxOSC
+          cd TVBoxOSC
           git checkout ${{ env.commit }}
           echo "tag=$(git log --date=format:'%Y%m%d-%H%M' --pretty=format:%cd ${{ env.commitS }} -1)" >> $GITHUB_ENV
           zip -q -x ".git/*" -r ${{ env.commitS }}-source.zip .
